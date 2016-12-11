@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sakila?useSSL=false
+    username: root
+    password: helloworld
+    driver-class-name: com.mysql.jdbc.Driver
+
+output-dir: target/
+commit-interval: 10
+page-size: 10
+delimiter: "|"
+quote: "\""
+table-definitions:
+  - file-name: Actor.csv    
+    select-query: "SELECT actor_id, first_name, last_name"
+    from-query: "FROM Actor"
+    sort-column: actor_id
+##  - file-name: City.csv   
+##    select-query: "SELECT * FROM City" 

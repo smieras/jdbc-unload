@@ -1,0 +1,10 @@
+output-dir: target/
+commit-interval: 100
+page-size: 100
+delimiter: "|"
+quote: "\""
+table-definitions:
+  - file-name: Customer.csv    
+    select-query: "SELECT ID, FirstName, LastName, Street, City"
+    from-query: "FROM Customer"
+    sort-column: ID
