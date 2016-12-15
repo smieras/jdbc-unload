@@ -34,7 +34,7 @@ public class TableUnloader {
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(configuration.getOutputDir() + tableDefinition.getFileName(), true))) {
 				int count = 0;
 				List<Record> records = new ArrayList<>();
-				Record record = null;
+				Record record;
 				while((record = reader.read()) != null) {
 					records.add(record);
 					count++;
