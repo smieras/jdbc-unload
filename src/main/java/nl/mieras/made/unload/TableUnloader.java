@@ -31,7 +31,7 @@ public class TableUnloader {
 		
 		for (TableDefinition tableDefinition : configuration.getTableDefinitions()) {			
 			JdbcPagingItemReader<Record> reader = jdbcReader.getJdbcPagingItemReader(tableDefinition.getSelectQuery(), tableDefinition.getFromQuery(), tableDefinition.getSortColumn());
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(configuration.getOutputDir() + tableDefinition.getFileName(), true))) {
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(configuration.getOutputDir() + tableDefinition.getFileName(), false))) {
 				int count = 0;
 				List<Record> records = new ArrayList<>();
 				Record record;
