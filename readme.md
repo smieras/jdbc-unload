@@ -7,4 +7,3 @@
 ## How to configure
 
 ## How to use
-

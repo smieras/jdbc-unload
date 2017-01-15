@@ -18,6 +18,7 @@ package nl.mierasmade.reader;
 import javax.sql.DataSource;
 
 import org.springframework.batch.item.database.JdbcPagingItemReader;
+import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,14 +35,12 @@ public class JdbcItemReader {
 	private DataSource dataSource;
 	@Autowired
 	private RecordMapper recordMapper;
-	@Autowired
-	private QueryProvider queryProvider;
 	
-	public JdbcPagingItemReader<Record> getJdbcPagingItemReader(String select, String from, String keyColumn) {
+	public JdbcPagingItemReader<Record> constructJdbcPagingItemReader(PagingQueryProvider pagingQueryProvider) {
 		JdbcPagingItemReader<Record> reader = new JdbcPagingItemReader<>();		
 		reader.setDataSource(dataSource);
 		reader.setRowMapper(recordMapper);
-		reader.setQueryProvider(queryProvider.getQueryProvider(select, from, keyColumn));
+		reader.setQueryProvider(pagingQueryProvider);
 		reader.setPageSize(configuration.getPageSize());
 		try {
 			reader.afterPropertiesSet();

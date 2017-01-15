@@ -23,12 +23,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-class QueryProvider {
+public class QueryProvider {
 	
 	@Autowired
 	private DataSource dataSource;	
 	
-	public PagingQueryProvider getQueryProvider(String select, String from, String keyColumn) {
+	public PagingQueryProvider constructQueryProvider(String select, String from, String keyColumn) {
 		SqlPagingQueryProviderFactoryBean provider = new SqlPagingQueryProviderFactoryBean();
 		provider.setSelectClause(select);
 		provider.setFromClause(from);

@@ -24,18 +24,22 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.batch.item.database.JdbcPagingItemReader;
+import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nl.mierasmade.configuration.Configuration;
 import nl.mierasmade.reader.JdbcItemReader;
+import nl.mierasmade.reader.QueryProvider;
 import nl.mierasmade.record.Record;
 
 @Component
 public class TableUnloader {
 	
 	@Autowired
-	private JdbcItemReader jdbcReader;
+	private JdbcItemReader jdbcItemReader;
+	@Autowired
+	private QueryProvider queryProvider;	
 	@Autowired
 	private Configuration configuration;
 	
@@ -43,7 +47,8 @@ public class TableUnloader {
 	@PostConstruct
 	private void unloadTables() {
 		configuration.getTableDefinitions().forEach(t -> {
-			JdbcPagingItemReader<Record> reader = jdbcReader.getJdbcPagingItemReader(t.getSelectQuery(), t.getFromQuery(), t.getSortColumn());
+			PagingQueryProvider pagingQueryProvider = queryProvider.constructQueryProvider(t.getSelectQuery(), t.getFromQuery(), t.getSortColumn());
+			JdbcPagingItemReader<Record> reader = jdbcItemReader.constructJdbcPagingItemReader(pagingQueryProvider);
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(configuration.getOutputDir() + t.getFileName(), false))) {
 				int count = 0;
 				List<Record> records = new ArrayList<>();
