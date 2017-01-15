@@ -26,8 +26,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class JdbcUnloadApplicationTests {
 	
-	private static final String EXPECTED_FILE = "src/test/resources/Customer.csv";
-	private static final String ACTUAL_FILE = "target/Customer.csv";
+	private static final String EXPECTED_CUSTOMER_FILE = "src/test/resources/Customer.csv";
+	private static final String EXPECTED_PRODUCT_FILE = "src/test/resources/Product.csv";
+	private static final String ACTUAL_CUSTOMER_FILE = "target/Customer.csv";
+	private static final String ACTUAL_PRODUCT_FILE = "target/Product.csv";
 
 	@Test
 	public void contextLoads() {
@@ -35,6 +37,7 @@ public class JdbcUnloadApplicationTests {
 	
 	@Test
 	public void testFileEquality() throws Exception {
-		AssertFile.assertFileEquals(new FileSystemResource(EXPECTED_FILE), new FileSystemResource(ACTUAL_FILE));
+		AssertFile.assertFileEquals(new FileSystemResource(EXPECTED_CUSTOMER_FILE), new FileSystemResource(ACTUAL_CUSTOMER_FILE));
+		AssertFile.assertFileEquals(new FileSystemResource(EXPECTED_PRODUCT_FILE), new FileSystemResource(ACTUAL_PRODUCT_FILE));
 	}
 }

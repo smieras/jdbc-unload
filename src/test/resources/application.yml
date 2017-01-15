@@ -8,3 +8,7 @@ table-definitions:
     select-query: "SELECT ID, FirstName, LastName, Street, City"
     from-query: "FROM Customer"
     sort-column: ID
+  - file-name: Product.csv    
+    select-query: "SELECT *"
+    from-query: "FROM Product"
+    sort-column: ID

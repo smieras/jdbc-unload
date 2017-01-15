@@ -15,5 +15,3 @@ table-definitions:
     select-query: "SELECT actor_id, first_name, last_name"
     from-query: "FROM Actor"
     sort-column: actor_id
-##  - file-name: City.csv   
-##    select-query: "SELECT * FROM City" 
