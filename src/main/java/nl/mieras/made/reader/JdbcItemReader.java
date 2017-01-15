@@ -23,7 +23,7 @@ public class JdbcItemReader {
 	private QueryProvider queryProvider;
 	
 	public JdbcPagingItemReader<Record> getJdbcPagingItemReader(String select, String from, String keyColumn) {
-		JdbcPagingItemReader<Record> reader = new JdbcPagingItemReader<>();
+		JdbcPagingItemReader<Record> reader = new JdbcPagingItemReader<>();		
 		reader.setDataSource(dataSource);
 		reader.setRowMapper(recordMapper);
 		reader.setQueryProvider(queryProvider.getQueryProvider(select, from, keyColumn));

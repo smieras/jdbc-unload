@@ -22,7 +22,7 @@ public class RecordMapper implements RowMapper<Record> {
 
 	@Override
 	public Record mapRow(ResultSet rs, int rowNum) throws SQLException {
-		ResultSetMetaData rsmd = rs.getMetaData();
+		ResultSetMetaData rsmd = rs.getMetaData();		
 		int columnCount = rsmd.getColumnCount();
 		Record record = new Record();
 		Object[] columns = new Object[columnCount];

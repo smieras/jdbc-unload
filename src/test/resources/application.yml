@@ -1,5 +1,5 @@
 output-dir: target/
-commit-interval: 100
+commit-interval: 5
 page-size: 100
 delimiter: "|"
 quote: "\""

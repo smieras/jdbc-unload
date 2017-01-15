@@ -61,9 +61,5 @@ public class Configuration {
 
 	public List<TableDefinition> getTableDefinitions() {
 		return tableDefinitions;
-	}
-
-	public void setTableDefinitions(List<TableDefinition> tableDefinitions) {
-		this.tableDefinitions = tableDefinitions;
 	}	
 }
