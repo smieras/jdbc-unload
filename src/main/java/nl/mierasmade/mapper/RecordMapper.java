@@ -1,4 +1,4 @@
-package nl.mieras.made.mapper;
+package nl.mierasmade.mapper;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -9,10 +9,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.stereotype.Component;
 
-
-import nl.mieras.made.configuration.Configuration;
-import nl.mieras.made.record.Record;
-import nl.mieras.made.util.StringUtils;
+import nl.mierasmade.configuration.Configuration;
+import nl.mierasmade.record.Record;
+import nl.mierasmade.util.StringUtils;
 
 @Component
 public class RecordMapper implements RowMapper<Record> {

@@ -1,4 +1,4 @@
-package nl.mieras.made.record;
+package nl.mierasmade.record;
 
 public class Record {
 	

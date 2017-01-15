@@ -1,4 +1,4 @@
-package nl.mieras.made;
+package nl.mierasmade;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class JdbcUnloadApplicationTests {
 	
 	private static final String EXPECTED_FILE = "src/test/resources/Customer.csv";
-	private static final String OUTPUT_FILE = "target/Customer.csv";
+	private static final String ACTUAL_FILE = "target/Customer.csv";
 
 	@Test
 	public void contextLoads() {
@@ -20,6 +20,6 @@ public class JdbcUnloadApplicationTests {
 	
 	@Test
 	public void testFileEquality() throws Exception {
-		AssertFile.assertFileEquals(new FileSystemResource(EXPECTED_FILE), new FileSystemResource(OUTPUT_FILE));
+		AssertFile.assertFileEquals(new FileSystemResource(EXPECTED_FILE), new FileSystemResource(ACTUAL_FILE));
 	}
 }

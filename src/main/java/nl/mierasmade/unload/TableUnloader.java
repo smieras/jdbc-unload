@@ -1,4 +1,4 @@
-package nl.mieras.made.unload;
+package nl.mierasmade.unload;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -12,10 +12,9 @@ import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import nl.mieras.made.configuration.Configuration;
-import nl.mieras.made.reader.JdbcItemReader;
-import nl.mieras.made.record.Record;
-import nl.mieras.made.table.TableDefinition;
+import nl.mierasmade.configuration.Configuration;
+import nl.mierasmade.reader.JdbcItemReader;
+import nl.mierasmade.record.Record;
 
 @Component
 public class TableUnloader {
@@ -28,10 +27,9 @@ public class TableUnloader {
 	// Entry point
 	@PostConstruct
 	private void unloadTables() {
-		
-		for (TableDefinition tableDefinition : configuration.getTableDefinitions()) {			
-			JdbcPagingItemReader<Record> reader = jdbcReader.getJdbcPagingItemReader(tableDefinition.getSelectQuery(), tableDefinition.getFromQuery(), tableDefinition.getSortColumn());
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(configuration.getOutputDir() + tableDefinition.getFileName(), false))) {
+		configuration.getTableDefinitions().forEach(t -> {
+			JdbcPagingItemReader<Record> reader = jdbcReader.getJdbcPagingItemReader(t.getSelectQuery(), t.getFromQuery(), t.getSortColumn());
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(configuration.getOutputDir() + t.getFileName(), false))) {
 				int count = 0;
 				List<Record> records = new ArrayList<>();
 				Record record;
@@ -50,8 +48,8 @@ public class TableUnloader {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-		}		
+			}			
+		});			
 	}
 
 	private void writeRecords(BufferedWriter bw, List<Record> records) throws IOException {

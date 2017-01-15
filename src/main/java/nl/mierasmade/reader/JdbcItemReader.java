@@ -1,4 +1,4 @@
-package nl.mieras.made.reader;
+package nl.mierasmade.reader;
 
 import javax.sql.DataSource;
 
@@ -6,9 +6,9 @@ import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import nl.mieras.made.configuration.Configuration;
-import nl.mieras.made.mapper.RecordMapper;
-import nl.mieras.made.record.Record;
+import nl.mierasmade.configuration.Configuration;
+import nl.mierasmade.mapper.RecordMapper;
+import nl.mierasmade.record.Record;
 
 @Component
 public class JdbcItemReader {

@@ -1,4 +1,4 @@
-package nl.mieras.made.util;
+package nl.mierasmade.util;
 
 import org.springframework.util.ObjectUtils;
 

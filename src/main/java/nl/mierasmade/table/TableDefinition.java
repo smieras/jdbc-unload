@@ -1,4 +1,4 @@
-package nl.mieras.made.table;
+package nl.mierasmade.table;
 
 public class TableDefinition {
 

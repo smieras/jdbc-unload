@@ -1,4 +1,4 @@
-package nl.mieras.made.configuration;
+package nl.mierasmade.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import nl.mieras.made.table.TableDefinition;
+import nl.mierasmade.table.TableDefinition;
 
 @Component
 @ConfigurationProperties

@@ -1,9 +1,11 @@
-package nl.mieras.made.util;
+package nl.mierasmade.util;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import nl.mierasmade.util.StringUtils;
 
 public class StringUtilsTest {
 	

@@ -1,4 +1,4 @@
-package nl.mieras.made;
+package nl.mierasmade;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

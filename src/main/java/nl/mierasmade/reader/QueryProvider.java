@@ -1,4 +1,4 @@
-package nl.mieras.made.reader;
+package nl.mierasmade.reader;
 
 import javax.sql.DataSource;
 
