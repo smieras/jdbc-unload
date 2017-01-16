@@ -1,4 +1,5 @@
 [![Coverage Status](https://coveralls.io/repos/github/mierasmade/jdbc-unload/badge.svg?branch=master)](https://coveralls.io/github/mierasmade/jdbc-unload?branch=master)
+https://travis-ci.org/mierasmade/jdbc-unload.svg?branch=master
 
 #JDBC-unload
 
