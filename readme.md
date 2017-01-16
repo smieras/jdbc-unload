@@ -15,7 +15,7 @@ The application takes an opinionated view on the format in which the data is ext
 
 ## How to configure
 
-To configure the application the user must provide an application.yml. In src/main/resources an example is provided of a possible setup of the yml configuration.
+To configure the application the user must provide an application.yml. The below example can be found [here].(https://github.com/mierasmade/jdbc-unload/blob/master/src/main/resources/application.yml)
 
 	spring:
 	  datasource:
@@ -39,7 +39,7 @@ To configure the application the user must provide an application.yml. In src/ma
   
 The user must provide datasource credentials. 
 
-Furthermore, depending on the database, it might be required to add a jdbc driver to the class path. One way to do this is by adding a driver as a dependency using maven. The current POM file contains **only** a mysql driver and a hsqldb driver for test purposes. It is up to the user to add a driver corresponding to the actual database used.
+Furthermore, depending on the database, it might be required to add a jdbc driver to the class path. One way to do this is by adding a driver as a dependency using maven. The current [POM](https://github.com/mierasmade/jdbc-unload/blob/master/pom.xml) file contains **only** a mysql driver and a hsqldb driver for test purposes. It is up to the user to add a driver corresponding to the actual database used.
 
 	<!-- START:: production database drivers -->
 	<dependency>
@@ -49,7 +49,7 @@ Furthermore, depending on the database, it might be required to add a jdbc drive
 	<!-- END:: production database drivers -->
 
 **General application configuration**   
-- The output directory will be created based on the relative path to which the jar is deployed.   
+- The output directory will be created based on the relative path to which the jar is deployed. It assumes write permission.   
 - The commit interval can be used to indicate how much rows should be kept in memory before writing them to a file.   
 - The page size determines how many records are fetched per read from the database.   
 - The delimiter is the separation character between columns.   
@@ -69,6 +69,14 @@ After setting up an application.yml and possibly adding the correct jdbc driver 
 
 The application can be executed by running the jar. The application can be made aware of its configuration by pointing it in the right direction by using spring.config.location as an argument.
 
-	java -jar jdbc-unload-1.0.0.jar --spring.config.location=yourlocation/application.yml	
+	java -jar jdbc-unload-1.0.0.jar --spring.config.location=yourlocation/application.yml
+
+## References
+
+- Spring Boot 1.4.3.RELEASE official [documentation](http://docs.spring.io/spring-boot/docs/1.4.3.RELEASE/reference/htmlsingle/)
+- Accessing Relational Data using JDBC with Spring [guide](https://spring.io/guides/gs/relational-data-access/)
+- Spring Batch [JdbcPagingItemReader](http://docs.spring.io/spring-batch/apidocs/org/springframework/batch/item/database/JdbcPagingItemReader.html)
+
+	
 
 
