@@ -15,7 +15,7 @@ The application takes an opinionated view on the format in which the data is ext
 
 ## How to configure
 
-To configure the application the user must provide an application.yml. The below example can be found [here].(https://github.com/mierasmade/jdbc-unload/blob/master/src/main/resources/application.yml)
+To configure the application the user must provide an application.yml. The below example can be found [here](https://github.com/mierasmade/jdbc-unload/blob/master/src/main/resources/application.yml).
 
 	spring:
 	  datasource:
