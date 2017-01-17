@@ -66,11 +66,7 @@
 			<plugin>
 			    <groupId>org.eluder.coveralls</groupId>
 			    <artifactId>coveralls-maven-plugin</artifactId>
-			    <version>4.3.0</version>
-			    <configuration>
-			    	<serviceJobId>$TRAVIS_JOB_ID</serviceJobId>
-			    	<serviceName>travis-ci</serviceName>
-			    </configuration>
+			    <version>4.3.0</version>			    
 			</plugin>
 			<plugin>
 			    <groupId>org.jacoco</groupId>
