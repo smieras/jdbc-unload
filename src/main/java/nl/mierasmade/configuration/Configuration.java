@@ -30,6 +30,7 @@ public class Configuration {
 	private String outputDir;
 	private char delimiter;
 	private char quote;
+	private char quoteEscape;
 	private int commitInterval;	
 	private int pageSize;
 	private List<TableDefinition> tableDefinitions = new ArrayList<>();
@@ -56,6 +57,14 @@ public class Configuration {
 
 	public void setQuote(char quote) {
 		this.quote = quote;
+	}	
+
+	public char getQuoteEscape() {
+		return quoteEscape;
+	}
+
+	public void setQuoteEscape(char quoteEscape) {
+		this.quoteEscape = quoteEscape;
 	}
 
 	public int getCommitInterval() {

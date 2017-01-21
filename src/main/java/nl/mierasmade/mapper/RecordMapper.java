@@ -43,7 +43,7 @@ public class RecordMapper implements RowMapper<Record> {
 		for (int i = 1; i < columnCount + 1; i++) {
 			columns[i - 1] = getColumnValue(rs, i);
 		}
-		String row = StringUtils.arrayToDelimitedString(columns, configuration.getDelimiter(), configuration.getQuote());
+		String row = StringUtils.arrayToDelimitedString(columns, configuration.getDelimiter(), configuration.getQuote(), configuration.getQuoteEscape());
 		record.setRow(row);
 		return record;		
 	}

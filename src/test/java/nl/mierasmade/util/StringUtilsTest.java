@@ -42,21 +42,21 @@ public class StringUtilsTest {
 	@Test
 	public void testArrayToDelimitedStringWithoutElements() {
 		String expectedResult = "";
-		String actualResult = StringUtils.arrayToDelimitedString(dataWithoutElements, ',', '"');
+		String actualResult = StringUtils.arrayToDelimitedString(dataWithoutElements, ',', '"', '\\');
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}
 	@Test
 	public void testArrayToDelimitedStringWithOneElement() {
 		String expectedResult = "0";
-		String actualResult = StringUtils.arrayToDelimitedString(dataWithOneElement, ',', '"');
+		String actualResult = StringUtils.arrayToDelimitedString(dataWithOneElement, ',', '"', '\\');
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}
 	@Test
 	public void testArrayToDelimitedStringWithoutDelimiters() {
 		String expectedResult = "1,john,smith";
-		String actualResult = StringUtils.arrayToDelimitedString(dataWithoutDelimiters, ',', '"');
+		String actualResult = StringUtils.arrayToDelimitedString(dataWithoutDelimiters, ',', '"', '\\');
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}
@@ -64,17 +64,16 @@ public class StringUtilsTest {
 	@Test
 	public void testArrayToDelimitedStringWithDelimiters() {
 		String expectedResult = "2,\"jane, a\",cage";
-		String actualResult = StringUtils.arrayToDelimitedString(dataWithDelimiters, ',', '"');
+		String actualResult = StringUtils.arrayToDelimitedString(dataWithDelimiters, ',', '"', '\\');
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}
 	
 	@Test
 	public void testArrayToDelimitedStringWithDelimitersAndQuotes() {
-		String expectedResult = "3,\"\"s'Hertogenbosch, Den Bosch\",Nederland";
-		String actualResult = StringUtils.arrayToDelimitedString(dataWithDelimitersAndQuotes, ',', '"');
+		String expectedResult = "3,\"\\\"s'Hertogenbosch, Den Bosch\",Nederland";
+		String actualResult = StringUtils.arrayToDelimitedString(dataWithDelimitersAndQuotes, ',', '"', '\\');
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}	
-	
-}
+	}

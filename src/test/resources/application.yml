@@ -3,6 +3,7 @@ commit-interval: 5
 page-size: 100
 delimiter: "|"
 quote: "\""
+quote-escape: "\\"
 table-definitions:
   - file-name: Customer.csv    
     select-query: "SELECT ID, FirstName, LastName, Street, City"

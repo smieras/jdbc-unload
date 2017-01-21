@@ -32,6 +32,7 @@ To configure the application the user must provide an application.yml. The below
 	page-size: 10
 	delimiter: "|"
 	quote: "\""
+	quote-escape: "\\"
 	table-definitions:
 	  - file-name: Actor.csv    
 	    select-query: "SELECT actor_id, first_name, last_name"
@@ -57,6 +58,7 @@ Furthermore, depending on the database, it might be required to add a jdbc drive
 - The page size determines how many records are fetched per read from the database.   
 - The delimiter is the separation character between columns.   
 - The quote is the character used to surround the content of a column if a column contains the delimiter.   
+- The escapeQuote is the character used to escape an AS-IS quote character if a column contains the quote character.
 
 **Specific application configuration**   
 

@@ -25,9 +25,10 @@ public class StringUtils {
 	 * @param arr the array to display
 	 * @param delim the delimiter to use (typically a ",")
 	 * @param quote the quote to use if a field contains a delimiter
+	 * @param quoteEscape the character used to escape an AS-IS quote
 	 * @return the delimited {@code String}
 	 */
-	public static String arrayToDelimitedString(Object[] arr, char delim, char quote) {
+	public static String arrayToDelimitedString(Object[] arr, char delim, char quote, char quoteEscape) {
 		if (ObjectUtils.isEmpty(arr)) {
 			return "";
 		}
@@ -40,9 +41,11 @@ public class StringUtils {
 				sb.append(delim);
 			}
 			if (arr[i].toString().indexOf(delim) != -1) {
-				sb.append(quote);
-				sb.append(arr[i]);
-				sb.append(quote);
+				String candidate = arr[i].toString();
+				if (candidate.indexOf(quote) != -1) {
+					candidate = arr[i].toString().replace(Character.toString(quote), ("" + quoteEscape + quote));					
+				}				
+				surroundColumnWithQuotes(candidate, quote, sb, i);				
 			} else {
 				sb.append(arr[i]);				
 			}			
@@ -50,4 +53,9 @@ public class StringUtils {
 		return sb.toString();
 	}
 
+	private static void surroundColumnWithQuotes(String candidate, char quote, StringBuilder sb, int i) {
+		sb.append(quote);
+		sb.append(candidate);
+		sb.append(quote);
+	}
 }
