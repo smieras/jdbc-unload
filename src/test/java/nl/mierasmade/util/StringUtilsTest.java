@@ -28,6 +28,7 @@ public class StringUtilsTest {
 	private Object[] dataWithOneElement;
 	private Object[] dataWithoutDelimiters;
 	private Object[] dataWithDelimiters;
+	private Object[] dataWithDelimitersAndQuotes;
 	
 	@Before
 	public void setUp() {
@@ -35,6 +36,7 @@ public class StringUtilsTest {
 		dataWithOneElement = new Object[] { "0" };
 		dataWithoutDelimiters = new Object[] { "1" , "john", "smith"};
 		dataWithDelimiters = new Object[] { "2", "jane, a", "cage"};
+		dataWithDelimitersAndQuotes = new Object[] { "3", "\"s'Hertogenbosch, Den Bosch", "Nederland"};
 	}
 
 	@Test
@@ -58,6 +60,7 @@ public class StringUtilsTest {
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}
+	
 	@Test
 	public void testArrayToDelimitedStringWithDelimiters() {
 		String expectedResult = "2,\"jane, a\",cage";
@@ -65,5 +68,13 @@ public class StringUtilsTest {
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}
+	
+	@Test
+	public void testArrayToDelimitedStringWithDelimitersAndQuotes() {
+		String expectedResult = "3,\"\"s'Hertogenbosch, Den Bosch\",Nederland";
+		String actualResult = StringUtils.arrayToDelimitedString(dataWithDelimitersAndQuotes, ',', '"');
+		
+		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
+	}	
 	
 }

@@ -15,7 +15,7 @@ Price DECIMAL);
 
 INSERT INTO Customer VALUES(0,'Laura','Steel','429| Seventh Av.','Dallas');
 INSERT INTO Product VALUES(0,'Iron Iron',54);
-INSERT INTO Customer VALUES(1,'Susanne','King','366 - 20th Ave.','Olten');
+INSERT INTO Customer VALUES(1,'Susanne','King','366 - 20"th| Ave.','Olten');
 INSERT INTO Product VALUES(1,'Chair Shoe',248);
 INSERT INTO Customer VALUES(2,'Anne','Miller','20 Upland Pl.','Lyon');
 INSERT INTO Product VALUES(2,'Telephone Clock',248);
