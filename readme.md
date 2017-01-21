@@ -12,7 +12,7 @@ This application aims to provide
  
 approach to unload data to .csv files according to the RFC4180 standard from any SQL database using JDBC.
 
-The general use case is the ability to extract data from a database without the need of an complex and heavy framework. 
+The general use case is the ability to extract data from a database without the need of a complex and heavy framework. 
 
 The application takes an opinionated view on the format in which the data is extracted. It is kept as minimalistic as possible by cherry picking components from the spring framework to be able to extract data from a database. Nothing more, nothing less.
 
@@ -58,7 +58,7 @@ Furthermore, depending on the database, it might be required to add a jdbc drive
 - The page size determines how many records are fetched per read from the database.   
 - The delimiter is the separation character between columns.   
 - The quote is the character used to surround the content of a column if a column contains the delimiter.   
-- The escapeQuote is the character used to escape an AS-IS quote character if a column contains the quote character.
+- The quote-escape is the character used to escape an AS-IS quote character if a column contains the quote character.
 
 **Specific application configuration**   
 
