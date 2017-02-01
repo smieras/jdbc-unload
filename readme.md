@@ -7,12 +7,13 @@
 
 This application aims to provide
  - an easy to configure, 
- - lightweight and
+ - lightweight,
+ - DBMS agnostic and
  - memory friendly 
  
-approach to unload data to .csv files according to the RFC4180 standard from any SQL database using JDBC.
+approach to unload data to .csv files according to the RFC4180 standard from any SQL database by using JDBC.
 
-The general use case is the ability to extract data from a database without the need of a complex and heavy framework. 
+The general use case is the ability to extract data from a database without the need of a complex and heavy framework. This data can then be used to perform operations needed by the business such as validation, analysis, anonymization, testing, filtering and more.  
 
 The application takes an opinionated view on the format in which the data is extracted. It is kept as minimalistic as possible by cherry picking components from the spring framework to be able to extract data from a database. Nothing more, nothing less.
 
