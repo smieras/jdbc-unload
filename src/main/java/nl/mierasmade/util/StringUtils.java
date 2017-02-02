@@ -40,7 +40,7 @@ public class StringUtils {
 			if (i > 0) {
 				sb.append(delim);
 			}
-			if (arr[i].toString().indexOf(delim) != -1) {
+			if (arr[i] != null && arr[i].toString().indexOf(delim) != -1) {
 				String candidate = arr[i].toString();
 				if (candidate.indexOf(quote) != -1) {
 					candidate = arr[i].toString().replace(Character.toString(quote), ("" + quoteEscape + quote));					

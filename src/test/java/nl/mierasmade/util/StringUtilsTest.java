@@ -25,6 +25,7 @@ import nl.mierasmade.util.StringUtils;
 public class StringUtilsTest {
 	
 	private Object[] dataWithoutElements;
+	private Object[] dataWithNullElements;
 	private Object[] dataWithOneElement;
 	private Object[] dataWithoutDelimiters;
 	private Object[] dataWithDelimiters;
@@ -33,6 +34,7 @@ public class StringUtilsTest {
 	@Before
 	public void setUp() {
 		dataWithoutElements = new Object[] {};
+		dataWithNullElements = new Object[] { "-1", null, null };
 		dataWithOneElement = new Object[] { "0" };
 		dataWithoutDelimiters = new Object[] { "1" , "john", "smith"};
 		dataWithDelimiters = new Object[] { "2", "jane, a", "cage"};
@@ -43,6 +45,13 @@ public class StringUtilsTest {
 	public void testArrayToDelimitedStringWithoutElements() {
 		String expectedResult = "";
 		String actualResult = StringUtils.arrayToDelimitedString(dataWithoutElements, ',', '"', '\\');
+		
+		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
+	}
+	@Test
+	public void testArrayToDelimitedStringWithNullElements() {
+		String expectedResult = "-1,null,null";
+		String actualResult = StringUtils.arrayToDelimitedString(dataWithNullElements, ',', '"', '\\');
 		
 		assertTrue(String.format("The expected result [ %s ] is not the same as the actual result [ %s ]", expectedResult, actualResult),  expectedResult.equals(actualResult));
 	}
