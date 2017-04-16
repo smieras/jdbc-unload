@@ -1,7 +1,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/mierasmade/jdbc-unload/badge.svg?branch=master)](https://coveralls.io/github/mierasmade/jdbc-unload?branch=master)
 [![Build Status](https://travis-ci.org/mierasmade/jdbc-unload.svg?branch=master)](https://travis-ci.org/mierasmade/jdbc-unload)
 
-#JDBC-unload
+# JDBC-unload
 
 ## Introduction and use case
 
