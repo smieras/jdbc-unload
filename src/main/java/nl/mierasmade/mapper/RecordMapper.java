@@ -24,7 +24,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.stereotype.Component;
 
-import nl.mierasmade.configuration.Configuration;
+import nl.mierasmade.configuration.ExternalConfiguration;
 import nl.mierasmade.record.Record;
 import nl.mierasmade.util.StringUtils;
 
@@ -32,7 +32,7 @@ import nl.mierasmade.util.StringUtils;
 public class RecordMapper implements RowMapper<Record> {
 	
 	@Autowired
-	private Configuration configuration;
+	private ExternalConfiguration externalConfiguration;
 
 	@Override
 	public Record mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -43,7 +43,7 @@ public class RecordMapper implements RowMapper<Record> {
 		for (int i = 1; i < columnCount + 1; i++) {
 			columns[i - 1] = getColumnValue(rs, i);
 		}
-		String row = StringUtils.arrayToDelimitedString(columns, configuration.getDelimiter(), configuration.getQuote(), configuration.getQuoteEscape());
+		String row = StringUtils.arrayToDelimitedString(columns, externalConfiguration.getDelimiter(), externalConfiguration.getQuote(), externalConfiguration.getQuoteEscape());
 		record.setRow(row);
 		return record;		
 	}

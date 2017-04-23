@@ -17,7 +17,9 @@ package nl.mierasmade.util;
 
 import org.springframework.util.ObjectUtils;
 
-public class StringUtils {
+public abstract class StringUtils {
+	
+	private StringUtils() {}
 	
 	/**
 	 * Convert a {@code String} array into a delimited {@code String} (e.g. CSV).

@@ -25,7 +25,7 @@ import nl.mierasmade.table.TableDefinition;
 
 @Component
 @ConfigurationProperties
-public class Configuration {	
+public class ExternalConfiguration {	
 
 	private String outputDir;
 	private char delimiter;

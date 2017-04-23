@@ -21,35 +21,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.batch.item.database.JdbcPagingItemReader;
-import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import nl.mierasmade.configuration.Configuration;
-import nl.mierasmade.reader.JdbcItemReader;
-import nl.mierasmade.reader.QueryProvider;
+import nl.mierasmade.configuration.ExternalConfiguration;
+import nl.mierasmade.configuration.ReaderConfiguration;
 import nl.mierasmade.record.Record;
 
 @Component
-public class TableUnloader {
-	
+public class TableUnloader implements CommandLineRunner {	
+		
 	@Autowired
-	private JdbcItemReader jdbcItemReader;
+	private ExternalConfiguration externalConfiguration;	
 	@Autowired
-	private QueryProvider queryProvider;	
-	@Autowired
-	private Configuration configuration;
-	
-	// Entry point
-	@PostConstruct
-	private void unloadTables() {
-		configuration.getTableDefinitions().forEach(t -> {
-			PagingQueryProvider pagingQueryProvider = queryProvider.constructQueryProvider(t.getSelectQuery(), t.getFromQuery(), t.getSortColumn());
-			JdbcPagingItemReader<Record> reader = jdbcItemReader.constructJdbcPagingItemReader(pagingQueryProvider);
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(configuration.getOutputDir() + t.getFileName(), false))) {
+	private ReaderConfiguration readerConfiguration;
+
+	@Override
+	public void run(String... arg0) throws Exception {
+		externalConfiguration.getTableDefinitions().forEach(tableDefinition -> {
+			JdbcPagingItemReader<Record> reader = readerConfiguration.jdbcPagingItemReader(tableDefinition);
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(externalConfiguration.getOutputDir() + tableDefinition.getFileName(), false))) {
 				int count = 0;
 				List<Record> records = new ArrayList<>();
 				Record record;
@@ -57,7 +50,7 @@ public class TableUnloader {
 					records.add(record);
 					count++;
 					
-					if (count == configuration.getCommitInterval()) {
+					if (count == externalConfiguration.getCommitInterval()) {
 						writeRecords(bw, records);						
 						records = new ArrayList<>();				
 						count = 0;
@@ -69,13 +62,13 @@ public class TableUnloader {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		});			
+		});		
 	}
-
+	
 	private void writeRecords(BufferedWriter bw, List<Record> records) throws IOException {
 		for (Record line : records) {
 			bw.write(line.toString());
 			bw.newLine();
 		}
-	}
+	}	
 }
