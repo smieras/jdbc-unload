@@ -1,20 +1,17 @@
 package nl.mierasmade.configuration;
 
 import javax.sql.DataSource;
-
+import nl.mierasmade.mapper.RecordMapper;
+import nl.mierasmade.record.Record;
+import nl.mierasmade.table.TableDefinition;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
-
-import nl.mierasmade.mapper.RecordMapper;
-import nl.mierasmade.record.Record;
-import nl.mierasmade.table.TableDefinition;
 
 @Lazy
 @Configuration
@@ -28,7 +25,7 @@ public class ReaderConfiguration {
 	private RecordMapper recordMapper;
 	
 	@Bean	
-	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+	@Scope("prototype")
 	public JdbcPagingItemReader<Record> jdbcPagingItemReader(TableDefinition tableDefinition) {		
 		JdbcPagingItemReader<Record> reader = new JdbcPagingItemReader<>();		
 		reader.setDataSource(dataSource);
@@ -44,7 +41,7 @@ public class ReaderConfiguration {
 	}
 	
 	@Bean	
-	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+	@Scope("prototype")
 	public PagingQueryProvider pagingQueryProvider(String select, String from, String keyColumn) {
 		SqlPagingQueryProviderFactoryBean provider = new SqlPagingQueryProviderFactoryBean();
 		provider.setSelectClause(select);

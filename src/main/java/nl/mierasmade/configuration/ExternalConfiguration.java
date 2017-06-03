@@ -17,22 +17,33 @@ package nl.mierasmade.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import nl.mierasmade.table.TableDefinition;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
-import nl.mierasmade.table.TableDefinition;
-
+@Validated
 @Component
 @ConfigurationProperties
 public class ExternalConfiguration {	
 
+	@NotNull
 	private String outputDir;
+	@NotNull
 	private char delimiter;
+	@NotNull
 	private char quote;
+	@NotNull
 	private char quoteEscape;
-	private int commitInterval;	
+	@NotNull
+	@Max(10_000)
+	private int commitInterval;
+	@Max(1000)
 	private int pageSize;
+	@NotEmpty
 	private List<TableDefinition> tableDefinitions = new ArrayList<>();
 	
 	public String getOutputDir() {

@@ -79,7 +79,7 @@ The application can be executed by running the jar. The application can be made 
 
 ## References
 
-- Spring Boot 1.4.3.RELEASE official [documentation](http://docs.spring.io/spring-boot/docs/1.4.3.RELEASE/reference/htmlsingle/)
+- Spring Boot 1.5.3.RELEASE official [documentation](http://docs.spring.io/spring-boot/docs/1.5.3.RELEASE/reference/htmlsingle/)
 - Accessing Relational Data using JDBC with Spring [guide](https://spring.io/guides/gs/relational-data-access/)
 - Spring Batch [JdbcPagingItemReader](http://docs.spring.io/spring-batch/apidocs/org/springframework/batch/item/database/JdbcPagingItemReader.html)
 

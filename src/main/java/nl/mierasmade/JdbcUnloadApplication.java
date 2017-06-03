@@ -15,13 +15,24 @@
  ******************************************************************************/
 package nl.mierasmade;
 
+import nl.mierasmade.unload.TableUnloader;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JdbcUnloadApplication {
+public class JdbcUnloadApplication implements CommandLineRunner {
+
+	@Autowired
+	private TableUnloader tableUnloader;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JdbcUnloadApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		tableUnloader.unload();
 	}
 }

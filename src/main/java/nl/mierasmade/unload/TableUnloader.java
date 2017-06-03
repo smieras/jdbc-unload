@@ -20,26 +20,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.batch.item.database.JdbcPagingItemReader;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
 import nl.mierasmade.configuration.ExternalConfiguration;
 import nl.mierasmade.configuration.ReaderConfiguration;
 import nl.mierasmade.record.Record;
+import org.springframework.batch.item.database.JdbcPagingItemReader;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
-public class TableUnloader implements CommandLineRunner {	
+public class TableUnloader {
 		
 	@Autowired
 	private ExternalConfiguration externalConfiguration;	
 	@Autowired
 	private ReaderConfiguration readerConfiguration;
 
-	@Override
-	public void run(String... arg0) throws Exception {
+	public void unload() {
 		externalConfiguration.getTableDefinitions().forEach(tableDefinition -> {
 			JdbcPagingItemReader<Record> reader = readerConfiguration.jdbcPagingItemReader(tableDefinition);
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(externalConfiguration.getOutputDir() + tableDefinition.getFileName(), false))) {
@@ -49,26 +45,26 @@ public class TableUnloader implements CommandLineRunner {
 				while((record = reader.read()) != null) {
 					records.add(record);
 					count++;
-					
+
 					if (count == externalConfiguration.getCommitInterval()) {
-						writeRecords(bw, records);						
-						records = new ArrayList<>();				
+						writeRecords(bw, records);
+						records = new ArrayList<>();
 						count = 0;
-					}					
-				}				
-				
+					}
+				}
+
 				writeRecords(bw, records);
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
-			}			
-		});		
+			}
+		});
 	}
-	
+
 	private void writeRecords(BufferedWriter bw, List<Record> records) throws IOException {
 		for (Record line : records) {
 			bw.write(line.toString());
 			bw.newLine();
 		}
-	}	
+	}
 }
